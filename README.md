@@ -1,3 +1,17 @@
+🚀 Zabbix Mediatype HTML Modern 🚀
+🔧 Version V0.2-24/12
+
+Jetzt mit optimiertem Design und verbesserten Funktionen:
+✨ Schickes modernes Layout für klare Benachrichtigungen.
+📱 Mobilfreundlich – Perfekt auf allen Geräten lesbar.
+⚡ Performance-Boost – Schnell und effizient!
+🎨 Anpassbares Design – Farben und Stil für jede Marke.
+🔒 Barrierefrei – Auch für Screenreader optimiert.
+
+📩 Perfekt für:
+	•	Problembenachrichtigungen
+	•	Host-Statusübersicht
+
 Es müssen im Zabbix System unter Administration -> Macros --> folgende Macros gesetzt werden und die Values auf das eigene System angepasst werden . Getestet ist das ganze mit Zabbbix 7.0
 
 ## 1. Setzen der Macros
