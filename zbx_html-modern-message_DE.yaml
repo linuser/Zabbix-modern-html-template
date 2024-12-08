@@ -173,7 +173,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" style="width: 150px;" onerror="this.src='https://example.com/default-logo.png';">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -355,7 +355,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                           <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -537,7 +537,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                          <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -719,7 +719,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                             <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -901,7 +901,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                              <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -1578,7 +1578,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                             <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
@@ -1760,7 +1760,7 @@ zabbix_export:
                     <!-- Footer Section -->
                     <footer class="footer" role="contentinfo">
                         <div class="image-wrapper">
-                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                               <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
                         </div>
                         <p>Zabbix Monitoring System</p>
                     </footer>
