@@ -1,7 +1,7 @@
 Es müssen im Zabbix System unter Administration  -> Macros --> folgende Macros gesetzt werden und die Values auf das eigene System angepasst werden .
 Getestet ist das ganze mit Zabbbix 7.0
 
-
+https://github.com/linuser/Zabbix-modern-html-template/blob/main/problem-behoben.png
 Macro                   Value
 {$ZABBIXHOST}           hostname 
 {$ZABBIXHOST_LINK}      https://hostname.example
