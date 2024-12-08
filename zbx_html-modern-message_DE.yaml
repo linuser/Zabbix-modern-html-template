@@ -1,0 +1,1784 @@
+zabbix_export:
+  version: '7.0'
+  media_types:
+    - name: 'Email (HTML) modern by PlaNet Fox'
+      type: EMAIL
+      smtp_server: mail.example.de
+      smtp_helo: zabbix.example.de
+      smtp_email: zabbix@example.de
+      smtp_authentication: PASSWORD
+      username: zabbix@example.de
+      password: ''
+      message_templates:
+        - event_source: TRIGGERS
+          operation_mode: PROBLEM
+          subject: 'Problem: {EVENT.NAME}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Benachrichtigung über ein aufgetretenes Problem im Zabbix Monitoring System. Enthält Details zu Host, Dauer und Schweregrad.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Problem Aufgetreten</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #d9534f;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #ffe9e9;
+                        border: 2px solid #d9534f;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #d9534f;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #d9534f;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                    }
+                    .footer .image-wrapper img:empty {
+                        display: none; /* Fallback für nicht geladenes Bild */
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #d9534f;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Host: {HOST.NAME}, Kundengruppe: {TRIGGER.HOSTGROUP.NAME}, Problem: {EVENT.NAME}
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Problem Aufgetreten</h1> 
+                        <div class="severity">{TRIGGER.SEVERITY}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Betroffener Host</h3>
+                        <p><strong>Host:</strong> {HOST.NAME}</p>
+                        <p><strong>Hostgruppe:</strong> {TRIGGER.HOSTGROUP.NAME}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Vorfall</h2>
+                        <div class="details">
+                            <p><strong>Aufgetreten um:</strong> {EVENT.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.DATE}</p>
+                            <p><strong>Problem:</strong> {EVENT.NAME}</p>
+                            <p><strong>Schweregrad:</strong> {EVENT.SEVERITY}</p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="button">Details Ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" style="width: 150px;" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: TRIGGERS
+          operation_mode: RECOVERY
+          subject: 'Resolved in {EVENT.DURATION}: {EVENT.NAME}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Problem behoben: Benachrichtigung über die Behebung eines Problems im Zabbix Monitoring System. Enthält Details zu Host, Dauer und Schweregrad.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Problem Behoben</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #5cb85c; /* Grüne Farbe für behoben */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #eafbea;
+                        border: 2px solid #5cb85c;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #5cb85c;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #5cb85c;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #5cb85c;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head> 
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Host: {HOST.NAME}, Kundengruppe: {TRIGGER.HOSTGROUP.NAME}, Problem: {EVENT.NAME} wurde behoben.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Problem Behoben</h1> 
+                        <div class="severity">{TRIGGER.SEVERITY}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Betroffener Host</h3>
+                        <p><strong>Host:</strong> {HOST.NAME}</p>
+                        <p><strong>Hostgruppe:</strong> {TRIGGER.HOSTGROUP.NAME}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Vorfall</h2>
+                        <div class="details">
+                            <p><strong>Aufgetreten um:</strong> {EVENT.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.DATE}</p>
+                            <p><strong>Problem:</strong> {EVENT.NAME}</p>
+                            <p><strong>Schweregrad:</strong> <span class="severity">{TRIGGER.SEVERITY}</span></p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="button">Details Ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: TRIGGERS
+          operation_mode: UPDATE
+          subject: 'Updated problem in {EVENT.AGE}: {EVENT.NAME}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Service-Update: Informationen über Statusänderungen oder Updates eines überwachten Services im Zabbix Monitoring System. Enthält Details zu Verfügbarkeit, Dauer und Schweregrad.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Service-Update</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #5bc0de; /* Blau für Updates */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #e7f3fa;
+                        border: 2px solid #5bc0de;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #5bc0de;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #5bc0de;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #5bc0de;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Service-Update: {SERVICE.NAME} hat den neuen Status {SERVICE.STATUS}.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Service-Update</h1> 
+                        <div class="severity">Service Status: {SERVICE.STATUS}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Aktualisierter Service</h3>
+                        <p><strong>Service-Name:</strong> {SERVICE.NAME}</p>
+                        <p><strong>Neuer Status:</strong> {SERVICE.STATUS}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Update</h2>
+                        <div class="details">
+                            <p><strong>Geändert um:</strong> {EVENT.UPDATE.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.UPDATE.DATE}</p>
+                            <p><strong>Verfügbarkeit:</strong> {SERVICE.AVAILABILITY}</p>
+                            <p><strong>Schweregrad:</strong> <span class="severity">{TRIGGER.SEVERITY}</span></p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=services.view" class="button">Service-Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: DISCOVERY
+          operation_mode: PROBLEM
+          subject: 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Discovery: Benachrichtigung über eine neue Entdeckung im Zabbix Monitoring System. Enthält Details zu Host, IP-Adresse und Gruppe.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Discovery</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #0275d8; /* Blau für Discovery */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #e8f3fc;
+                        border: 2px solid #0275d8;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #0275d8;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #0275d8;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #0275d8;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Neue Entdeckung: {DISCOVERY.DEVICE.IP} wurde der Gruppe {DISCOVERY.DEVICE.HOSTGROUP} hinzugefügt.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Neue Entdeckung</h1> 
+                        <div class="severity">Discovery Event</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Entdeckter Host</h3>
+                        <p><strong>IP-Adresse:</strong> {DISCOVERY.DEVICE.IP}</p>
+                        <p><strong>Hostname:</strong> {DISCOVERY.DEVICE.NAME}</p>
+                        <p><strong>Hostgruppe:</strong> {DISCOVERY.DEVICE.HOSTGROUP}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zur Entdeckung</h2>
+                        <div class="details">
+                            <p><strong>Erkannt um:</strong> {EVENT.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.DATE}</p>
+                            <p><strong>Aktion:</strong> {DISCOVERY.ACTION}</p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view" class="button">Discovery-Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: AUTOREGISTRATION
+          operation_mode: PROBLEM
+          subject: 'Autoregistration: {HOST.HOST}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Auto-Registration: Benachrichtigung über die automatische Registrierung eines neuen Hosts im Zabbix Monitoring System. Enthält Details zu Hostname, IP und Gruppe.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Auto-Registration</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #5cb85c; /* Grün für Auto-Registration */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #eafbea;
+                        border: 2px solid #5cb85c;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #5cb85c;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #5cb85c;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #5cb85c;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Neuer Host automatisch registriert: {HOST.NAME} mit IP {HOST.IP}.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Neue Auto-Registration</h1> 
+                        <div class="severity">Host-Registrierung</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Registrierter Host</h3>
+                        <p><strong>Hostname:</strong> {HOST.NAME}</p>
+                        <p><strong>IP-Adresse:</strong> {HOST.IP}</p>
+                        <p><strong>Hostgruppe:</strong> {TRIGGER.HOSTGROUP.NAME}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zur Auto-Registration</h2>
+                        <div class="details">
+                            <p><strong>Registriert um:</strong> {EVENT.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.DATE}</p>
+                            <p><strong>Aktion:</strong> Auto-Registration abgeschlossen</p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=auto_registration.view" class="button">Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: INTERNAL
+          operation_mode: PROBLEM
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Benachrichtigung über ein internes Problem im Zabbix Monitoring System.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico">
+                <title>Internes Problem: {HOST.NAME}</title>
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #ffc107;
+                        color: #212529;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #d9534f;
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #fff3cd;
+                        border: 1px solid #ffc107;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px;
+                        color: #856404;
+                        font-size: 14px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #ffc107;
+                        color: #212529;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer img {
+                        max-width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .company-info-text {
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                </style>
+            </head>
+            <body>
+                <!-- Preheader -->
+                <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Internes Problem auf {HOST.NAME}: {EVENT.NAME}
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>⚠️ Internes Problem</h1>
+                        <div class="severity">Schweregrad: {TRIGGER.SEVERITY}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Betroffener Host</h3>
+                        <p><strong>Host:</strong> {HOST.NAME}</p>
+                        <p><strong>Hostgruppe:</strong> {TRIGGER.HOSTGROUP.NAME}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Problem</h2>
+                        <div class="details">
+                            <p><strong>Problem:</strong> {EVENT.NAME}</p>
+                            <p><strong>Aufgetreten um:</strong> {EVENT.TIME} am {EVENT.DATE}</p>
+                            <p><strong>Trigger-ID:</strong> {TRIGGER.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="button">Details Ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer">
+                        <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <div class="additional-info">
+                        <p>Hinweis: Diese Nachricht wurde automatisch generiert.</p>
+                        <p>System: <a href="{$ZABBIXHOST_LINK}">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: INTERNAL
+          operation_mode: RECOVERY
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Benachrichtigung über eine interne Problembehebung im Zabbix Monitoring System.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.3-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico">
+                <title> Internes Problem behoben: {HOST.NAME}</title>
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #28a745;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .header h1 {
+                        margin: 0;
+                        font-size: 24px;
+                    }
+                    .severity {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #ffffff;
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #d4edda;
+                        border: 1px solid #28a745;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px;
+                        color: #155724;
+                        font-size: 14px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #28a745;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer img {
+                        max-width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .company-info-text {
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                </style>
+            </head>
+            <body>
+                <!-- Preheader -->
+                <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Internes Problem auf {HOST.NAME} wurde behoben: {EVENT.NAME}
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>✅ Internes Problem behoben</h1>
+                        <div class="severity">Host: {HOST.NAME}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Betroffener Host</h3>
+                        <p><strong>Host:</strong> {HOST.NAME}</p>
+                        <p><strong>Hostgruppe:</strong> {TRIGGER.HOSTGROUP.NAME}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zur Problembehebung</h2>
+                        <div class="details">
+                            <p><strong>Behoben um:</strong> {EVENT.RECOVERY.TIME} am {EVENT.RECOVERY.DATE}</p>
+                            <p><strong>Problem:</strong> {EVENT.NAME}</p>
+                            <p><strong>Ursprünglicher Schweregrad:</strong> {TRIGGER.SEVERITY}</p>
+                            <p><strong>Trigger-ID:</strong> {TRIGGER.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="button">Details Ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer">
+                        <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo">
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <div class="additional-info">
+                        <p>Hinweis: Diese Nachricht wurde automatisch generiert.</p>
+                        <p>System: <a href="{$ZABBIXHOST_LINK}">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: SERVICE
+          operation_mode: PROBLEM
+          subject: 'Service "{SERVICE.NAME}" problem: {EVENT.NAME}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+            <head>
+            
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Service-Benachrichtigung: Informationen über den aktuellen Status eines überwachten Services im Zabbix Monitoring System. Enthält Details zu Verfügbarkeit, Dauer und Schweregrad.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Service-Benachrichtigung</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #f0ad4e; /* Orange für Service */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #d9534f; /* Rot für hohe Schwere */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #fff3cd;
+                        border: 2px solid #f0ad4e;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #f0ad4e;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #f0ad4e;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #f0ad4e;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+              <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+              
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Service-Benachrichtigung: {SERVICE.NAME} hat den Status {SERVICE.STATUS}.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Service-Benachrichtigung</h1> 
+                        <div class="severity">Service Status: {SERVICE.STATUS}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Betroffener Service</h3>
+                        <p><strong>Service-Name:</strong> {SERVICE.NAME}</p>
+                        <p><strong>Status:</strong> {SERVICE.STATUS}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Service</h2>
+                        <div class="details">
+                            <p><strong>Verfügbar seit:</strong> {SERVICE.UPTIME}</p>
+                            <p><strong>Verfügbarkeit:</strong> {SERVICE.AVAILABILITY}</p>
+                            <p><strong>Datum:</strong> {EVENT.DATE}</p>
+                            <p><strong>Schweregrad:</strong> <span class="severity">{TRIGGER.SEVERITY}</span></p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=services.view" class="button">Service-Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: SERVICE
+          operation_mode: RECOVERY
+          subject: 'Service "{SERVICE.NAME}" resolved in {EVENT.DURATION}: {EVENT.NAME}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Service-Wiederherstellung: Benachrichtigung über die erfolgreiche Wiederherstellung eines überwachten Services im Zabbix Monitoring System.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Service Recovery</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #5cb85c; /* Grün für Recovery */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #eafbea;
+                        border: 2px solid #5cb85c;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #5cb85c;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #5cb85c;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #5cb85c;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Service-Wiederherstellung: {SERVICE.NAME} ist wieder verfügbar.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Service-Wiederherstellung</h1> 
+                        <div class="severity">Service Status: Wiederhergestellt</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Wiederhergestellter Service</h3>
+                        <p><strong>Service-Name:</strong> {SERVICE.NAME}</p>
+                        <p><strong>Aktueller Status:</strong> Wiederhergestellt</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zur Wiederherstellung</h2>
+                        <div class="details">
+                            <p><strong>Wiederhergestellt um:</strong> {EVENT.RECOVERY.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.RECOVERY.DATE}</p>
+                            <p><strong>Verfügbarkeit:</strong> {SERVICE.AVAILABILITY}</p>
+                            <p><strong>Dauer des Ausfalls:</strong> {SERVICE.DOWNTIME}</p>
+                            <p><strong>Schweregrad:</strong> <span class="severity">{TRIGGER.SEVERITY}</span></p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=services.view" class="button">Service-Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
+        - event_source: SERVICE
+          operation_mode: UPDATE
+          subject: 'Changed "{SERVICE.NAME}" service status to {EVENT.UPDATE.SEVERITY} in {EVENT.AGE}'
+          message: |
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+                <!--
+            Dieses Werk steht unter der Lizenz Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+            Details zur Lizenz finden Sie unter: https://creativecommons.org/licenses/by-sa/4.0/
+            Sie dürfen das Werk vervielfältigen, verbreiten und bearbeiten, solange Sie die Urheberschaft korrekt angeben und Änderungen unter der gleichen Lizenz teilen.
+            -->
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Service-Update: Informationen über Statusänderungen oder Updates eines überwachten Services im Zabbix Monitoring System. Enthält Details zu Verfügbarkeit, Dauer und Schweregrad.">
+                <meta name="author" content="Alexander Fox | fox@linuser.de">
+                <meta name="version" content="V0.2-24/12">
+                <link rel="apple-touch-icon" href="https://{$ZABBIXHOST_LINK}/favicon.png">
+                <link rel="shortcut icon" href="https://{$ZABBIXHOST_LINK}/images/general/zabbix.ico"> <!-- Shortcut Favicon -->
+                <title>Zabbix Service-Update</title>
+                <!-- Link zur Gotham Pro Schrift -->
+                <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+                <style>
+                    body {
+                        font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background: #5bc0de; /* Blau für Updates */
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .severity {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #ffc107; /* Goldene Farbe */
+                        margin-top: 5px;
+                    }
+                    .host-info-highlight {
+                        background: #e7f3fa;
+                        border: 2px solid #5bc0de;
+                        border-radius: 5px;
+                        padding: 15px;
+                        margin: 20px auto;
+                        max-width: 700px;
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .host-info-highlight h3 {
+                        margin: 0 0 10px;
+                        color: #5bc0de;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .details {
+                        background: #f9f9f9;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin: 20px 0;
+                    }
+                    .button-container {
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+                    .button {
+                        background: #5bc0de;
+                        color: #ffffff;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .footer {
+                        background: #0A466A;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .footer .image-wrapper img {
+                        display: inline-block;
+                        width: 150px;
+                    }
+                    .additional-info {
+                        background: #f9f9f9;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .additional-info a {
+                        color: #0A466A;
+                        text-decoration: none;
+                    }
+                    .additional-info a:hover {
+                        text-decoration: underline;
+                    }
+                    .company-info-text {
+                        max-width: 700px;
+                        margin: 20px auto;
+                        font-size: 14px;
+                        color: #555555;
+                        text-align: center;
+                    }
+                    .love-section {
+                        max-width: 700px;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #7a7a7a;
+                    }
+                    .love-section i {
+                        color: #5bc0de;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <!-- Preheader -->
+                   <div style="display:none; max-height:0px; overflow:hidden; color:#ffffff; font-size:0px; line-height:0;">
+                    Service-Update: {SERVICE.NAME} hat den neuen Status {SERVICE.STATUS}.
+                </div>
+                <div class="email-container">
+                    <header class="header">
+                        <h1>Service-Update</h1> 
+                        <div class="severity">Service Status: {SERVICE.STATUS}</div>
+                    </header>
+                    <!-- Highlighted Host Info Section -->
+                    <div class="host-info-highlight">
+                        <h3>Aktualisierter Service</h3>
+                        <p><strong>Service-Name:</strong> {SERVICE.NAME}</p>
+                        <p><strong>Neuer Status:</strong> {SERVICE.STATUS}</p>
+                    </div>
+                    <section class="content">
+                        <h2>Details zum Update</h2>
+                        <div class="details">
+                            <p><strong>Geändert um:</strong> {EVENT.UPDATE.TIME}</p>
+                            <p><strong>Datum:</strong> {EVENT.UPDATE.DATE}</p>
+                            <p><strong>Verfügbarkeit:</strong> {SERVICE.AVAILABILITY}</p>
+                            <p><strong>Schweregrad:</strong> <span class="severity">{TRIGGER.SEVERITY}</span></p>
+                            <p><strong>ID:</strong> {EVENT.ID}</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{$ZABBIXHOST_LINK}/zabbix.php?action=services.view" class="button">Service-Details ansehen</a>
+                        </div>
+                    </section>
+                    <!-- Footer Section -->
+                    <footer class="footer" role="contentinfo">
+                        <div class="image-wrapper">
+                            <img src="{$ZABBIXHOST_LOGO}" alt="Zabbix Monitoring System Logo" onerror="this.src='https://example.com/default-logo.png';">
+                        </div>
+                        <p>Zabbix Monitoring System</p>
+                    </footer>
+                    <!-- Additional Section -->
+                    <div class="additional-info" role="contentinfo">
+                        <p>
+                            Hinweis: Diese Nachricht wurde automatisch vom Zabbix Monitoring System generiert. 
+                        </p>
+                        <p style="margin-top: 5px;">Sent from Zabbix Server on <a href="{$ZABBIXHOST_LINK}" style="color: #0A466A; text-decoration: none;">{$ZABBIXHOST}</a></p>
+                    </div>
+                </div>
+                <!-- Company Information -->
+                <div class="company-info-text">
+                    <p>{$CUSTOM_MESSAGE_COMPANY}</p>
+                </div>
+                <!-- Love Section -->
+                <div class="love-section">
+                    <p>{$ZABBIXHOST_LOVE}</p>
+                </div>
+            </body>
+            </html>
