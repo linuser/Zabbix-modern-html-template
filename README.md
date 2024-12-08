@@ -14,5 +14,5 @@ Das Zabbix Logo für diesesn Template muss ins Zabbix Verzeichnis geladen werden
 
 -
 
-Danach kann das Mediatype Template "Email (HTML) Modern" hochgeladen werden und die Mailaccount Acoountdaten hinterlegt werden .Danach  Testen ob die
-Benutzerdaten stimmen und Speichern .Nun könnte ihr diesen Mediatype Benutzern zu wiesen und testen . 
+Danach kann das Mediatype Template "Email (HTML) Modern" hochgeladen werden und die Mailaccount Acoountdaten hinterlegt werden .Testen ob die
+Benutzerdaten stimmen und Speichern .Nun könnt ihr diesen Mediatype Benutzern zu weisen und testen . 
