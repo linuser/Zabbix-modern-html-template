@@ -1,4 +1,6 @@
-Es müssen im Zabbix System unter Administration  -> Macros --> folgende Macros gesetzt werden und die Values auf das eigene System angepasst werden 
+Es müssen im Zabbix System unter Administration  -> Macros --> folgende Macros gesetzt werden und die Values auf das eigene System angepasst werden .
+Getestet ist das ganze mit Zabbbix 7.0
+
 
 Macro                   Value
 {$ZABBIXHOST}           hostname 
