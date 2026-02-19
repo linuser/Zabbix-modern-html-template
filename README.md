@@ -19,7 +19,6 @@ Modern, responsive HTML email templates for **Zabbix 7.4** with Dark Mode suppor
 | System Fonts | ❌ | ✅ |
 | MSO Conditionals | ❌ | ✅ |
 | Host IP `{HOST.IP}` | ❌ | ✅ |
-| Acknowledge Button | ❌ | ✅ |
 | Event Tags | ❌ | ✅ |
 | Operational Data | ❌ | ✅ |
 | Duration in Recovery | ❌ | ✅ |
