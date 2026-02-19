@@ -1,0 +1,790 @@
+zabbix_export:
+  version: '7.4'
+  media_types:
+  - name: Email (HTML) modern V1.1 (FR)
+    description: |-
+      Modern HTML email templates V1.1 (Feb 2026) — Dark Mode, Outlook compatible, mobile responsive.
+
+      After import: configure SMTP settings (server, port, authentication) and set global macros:
+      - {$ZABBIXHOST} = your Zabbix hostname
+      - {$ZABBIXHOST_LINK} = https://your-zabbix-host
+      - {$ZABBIXHOST_LOGO} = https://your-zabbix-host/assets/img/zabbix_logo.png
+      - {$CUSTOM_MESSAGE_COMPANY} = your company name
+      - {$ZABBIXHOST_LOVE} = footer text
+
+      More info: https://github.com/linuser/Zabbix-modern-html-template
+    type: EMAIL
+    smtp_server: localhost
+    smtp_port: '25'
+    smtp_helo: localhost
+    smtp_email: zabbix@localhost
+    message_format: HTML
+    message_templates:
+    - event_source: TRIGGERS
+      operation_mode: PROBLEM
+      subject: 'Problem: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Hôte: {HOST.NAME}, Problème: {EVENT.NAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#dc3545;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Problème Détecté</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">{TRIGGER.SEVERITY}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#fff5f5;border-left:4px solid #dc3545;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#dc3545">Hôte Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{TRIGGER.HOSTGROUP.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>IP de l'hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.IP}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de l'incident</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Survenu à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Problème</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Données opérationnelles</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.OPDATA}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:10px 20px 0"><p style="margin:0;font-size:12px;color:#000"><strong>Tags d'événement:</strong> {EVENT.TAGS}</p></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#dc3545;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: TRIGGERS
+      operation_mode: RECOVERY
+      subject: 'Resolved in {EVENT.DURATION}: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problème Résolu: {HOST.NAME} — {EVENT.NAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Problème Résolu</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">{EVENT.DURATION}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#f0fff4;border-left:4px solid #28a745;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#28a745">Hôte Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{TRIGGER.HOSTGROUP.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>IP de l'hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.IP}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de la Résolution</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Résolu à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.RECOVERY.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.RECOVERY.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Problème d'origine</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Durée</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DURATION}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: TRIGGERS
+      operation_mode: UPDATE
+      subject: 'Updated problem in {EVENT.AGE}: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Mise à Jour du Problème: {EVENT.NAME} — {USER.FULLNAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Mise à Jour du Problème</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">{EVENT.ACK.STATUS}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#e8f4f8;border-left:4px solid #17a2b8;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#17a2b8">Hôte Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{TRIGGER.HOSTGROUP.NAME}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de la Mise à Jour</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Mis à jour à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Problème</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Message de mise à jour</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.UPDATE.MESSAGE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Mis à jour par</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{USER.FULLNAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Statut d'acquittement</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ACK.STATUS}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#17a2b8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: DISCOVERY
+      operation_mode: PROBLEM
+      subject: 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Nouvelle Découverte: {DISCOVERY.DEVICE.IPADDRESS}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#0275d8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Nouvelle Découverte</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">Événement de Découverte</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#e8f3fc;border-left:4px solid #0275d8;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#0275d8">Hôte Découvert</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Adresse IP</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{DISCOVERY.DEVICE.IPADDRESS}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nom d'hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{DISCOVERY.DEVICE.DNS}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{DISCOVERY.RULE.NAME}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de la Découverte</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Détecté à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Statut</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{DISCOVERY.DEVICE.STATUS}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Action</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{DISCOVERY.RULE.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#0275d8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails de Découverte</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: AUTOREGISTRATION
+      operation_mode: PROBLEM
+      subject: 'Autoregistration: {HOST.HOST}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Nouvelle Auto-Inscription: {HOST.HOST} ({HOST.IP})</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Nouvelle Auto-Inscription</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">Inscription d'hôte</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#f0fff4;border-left:4px solid #28a745;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#28a745">Hôte Inscrit</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nom d'hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.HOST}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Adresse IP</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.IP}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.GROUPS}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de l'Auto-Inscription</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Inscrit à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Action</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">Auto-inscription terminée</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=host.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: INTERNAL
+      operation_mode: PROBLEM
+      subject: 'Internal: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problème Interne: {HOST.NAME} — {EVENT.NAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#e6a800;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">⚠️ Problème Interne</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">{{TRIGGER.SEVERITY}}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#fff8e1;border-left:4px solid #e6a800;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#e6a800">Hôte Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{TRIGGER.HOSTGROUP.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>IP de l'hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.IP}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails du Problème</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Problème</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Survenu à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.TIME} {EVENT.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{TRIGGER.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID du Trigger</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{TRIGGER.ID}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#e6a800;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: INTERNAL
+      operation_mode: RECOVERY
+      subject: 'Internal resolved: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problème Interne Résolu: {HOST.NAME} — {EVENT.NAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">✅ Problème Interne Résolu</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">{{HOST.NAME}}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#f0fff4;border-left:4px solid #28a745;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#28a745">Hôte Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Hôte</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{HOST.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Groupe d'hôtes</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{TRIGGER.HOSTGROUP.NAME}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de la Résolution</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Résolu à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.RECOVERY.TIME} {EVENT.RECOVERY.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Problème</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.NAME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité d'origine</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{TRIGGER.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID du Trigger</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{TRIGGER.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: SERVICE
+      operation_mode: PROBLEM
+      subject: 'Service "{SERVICE.NAME}" problem: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Notification de Service: {SERVICE.NAME} — {SERVICE.STATUS}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#f0ad4e;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Notification de Service</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">Statut du Service: {SERVICE.STATUS}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#fff8e1;border-left:4px solid #f0ad4e;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#f0ad4e">Service Concerné</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nom du Service</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{SERVICE.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Statut</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{SERVICE.STATUS}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails du Service</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Temps de fonctionnement</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{SERVICE.UPTIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Disponibilité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{SERVICE.AVAILABILITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#f0ad4e;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails du Service</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: SERVICE
+      operation_mode: RECOVERY
+      subject: 'Service "{SERVICE.NAME}" resolved in {EVENT.DURATION}: {EVENT.NAME}'
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Service Rétabli: {SERVICE.NAME}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Service Rétabli</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">Statut du Service: Rétabli</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#f0fff4;border-left:4px solid #28a745;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#28a745">Service Rétabli</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nom du Service</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{SERVICE.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Statut Actuel</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">Rétabli</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails du Rétablissement</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Rétabli à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.RECOVERY.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Date</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.RECOVERY.DATE}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Disponibilité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{SERVICE.AVAILABILITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Durée de l'interruption</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.DURATION}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails du Service</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
+    - event_source: SERVICE
+      operation_mode: UPDATE
+      subject: Changed "{SERVICE.NAME}" service status to {EVENT.UPDATE.SEVERITY} in {EVENT.AGE}
+      message: |
+        <!DOCTYPE html>
+        <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <!--
+        License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+        Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+        <style>
+        body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#f0f2f5;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+        @media (prefers-color-scheme:dark) {
+        body {background-color:#1a1a2e !important;}
+        .ec {background:#16213e !important;}
+        .det,.hi {background:#1e2a3a !important;}
+        p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
+        a {color:#6cb4ee !important;}
+        .btn {color:#fff !important;}
+        }
+        @media only screen and (max-width:620px) {
+        .ec {width:100% !important;margin:0 !important;border-radius:0 !important;}
+        .ct {padding:15px !important;}
+        .hd h1 {font-size:20px !important;}
+        }
+        </style>
+        </head>
+        <body style="margin:0;padding:0;background-color:#f0f2f5">
+        <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Mise à Jour du Service: {SERVICE.NAME} — {SERVICE.STATUS}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <tr><td align="center" style="padding:20px 10px">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#fff">Mise à Jour du Service</h1>
+        <p style="margin:8px 0 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)">Statut du Service: {SERVICE.STATUS}</p>
+        </td></tr>
+        <tr><td style="padding:20px">
+        <table class="hi" width="100%" cellpadding="0" cellspacing="0" style="background:#e8f4f8;border-left:4px solid #17a2b8;border-radius:4px">
+        <tr><td style="padding:15px">
+        <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#17a2b8">Service Mis à Jour</p>
+        <table cellpadding="0" cellspacing="0"><tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nom du Service</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{SERVICE.NAME}</td></tr>
+        <tr><td style="padding:5px 0;color:#000;font-size:13px;width:140px;vertical-align:top"><strong>Nouveau Statut</strong></td><td style="padding:5px 0;color:#000;font-size:14px;font-weight:700">{SERVICE.STATUS}</td></tr>
+        </table>
+        </td></tr></table>
+        </td></tr>
+        <tr><td class="ct" style="padding:0 20px">
+        <h2 style="font-size:16px;color:#000;margin:20px 0 10px">Détails de la Mise à Jour</h2>
+        <table class="det" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9fb;border-radius:6px;overflow:hidden">
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Modifié à</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Disponibilité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{SERVICE.AVAILABILITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>Sévérité</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.UPDATE.SEVERITY}</td></tr>
+        <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
+        </table>
+        </td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#17a2b8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Voir les Détails du Service</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
+        <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
+        <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
+        </td></tr>
+        <tr><td style="padding:15px 20px;text-align:center;font-size:11px;color:#999">
+        <p style="margin:0">Ce message a été généré automatiquement par le système de surveillance Zabbix.</p>
+        <p style="margin:5px 0 0">Envoyé depuis le serveur Zabbix sur <a href="{$ZABBIXHOST_LINK}" style="color:#0A466A;text-decoration:none">{$ZABBIXHOST}</a></p>
+        </td></tr>
+        <tr><td style="text-align:center;padding:10px 20px;font-size:13px;color:#777"><p style="margin:0">{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+        <tr><td style="text-align:center;padding:5px 20px 20px;font-size:11px;color:#aaa"><p style="margin:0">{$ZABBIXHOST_LOVE}</p></td></tr>
+        </table>
+        </td></tr></table>
+        </body>
+        </html>
