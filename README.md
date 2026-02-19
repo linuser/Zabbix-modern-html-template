@@ -11,7 +11,7 @@ Modern, responsive HTML email templates for **Zabbix 7.4** with Dark Mode suppor
 
 ## Features
 
-| Feature | V0.2 (Original) | V1.1 |
+| Feature | V1.0 (Original) | V1.1 |
 |---------|:---:|:---:|
 | Outlook compatible (table layout) | ❌ | ✅ |
 | Inline CSS | ❌ | ✅ |
