@@ -1,0 +1,26 @@
+{#- Page skeleton shared by all flavours. Flavours fill the "content" block. -#}
+<!DOCTYPE html>
+<html lang="{{ lang }}" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<!--
+License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+Original: Alexander Fox | fox@linuser.de | Optimized: V1.1-26/02 | V{{ version }}: modular build, severity colours, compact flavour, Outlook VML buttons
+Generated from https://github.com/linuser/Zabbix-modern-html-template - edit the sources there, not this text.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+{#- Classic Outlook: render at 96 dpi, and use Segoe UI instead of falling back to
+    Times New Roman when the first font of the stack is unknown. #}
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+<style>body,table,td,p,a,h1,h2,span,strong {font-family:'Segoe UI',Arial,sans-serif !important;}</style><![endif]-->
+<style>
+{{ css | safe }}
+</style>
+</head>
+<body>
+<div class="preheader">{{ t[msg.preheader] }}</div>
+{% block content %}{% endblock %}
+</body>
+</html>

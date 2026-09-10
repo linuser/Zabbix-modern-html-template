@@ -1,0 +1,35 @@
+/*
+ * Shared by every flavour; the flavour's style.css is appended after this file.
+ *
+ * The build inlines every rule outside @media into style="" attributes (Outlook and
+ * Gmail need that). @media blocks stay in a <style> tag: dark mode and mobile.
+ *
+ * Colour tokens, replaced per message from src/themes.yaml:
+ *   accent       header, button, accent line
+ *   on-accent    text on accent
+ *   ink          coloured text on white
+ *   tint         light panel background
+ * var(--sev-accent, #fallback) is always coloured by the event severity.
+ *
+ * Class "tk" marks elements with dark text on a coloured fill; dark mode keeps them dark.
+ */
+
+body { margin: 0; padding: 0; background-color: #f0f2f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+.preheader { display: none; mso-hide: all; max-height: 0; overflow: hidden; color: #f0f2f5; font-size: 0; line-height: 0; }
+.page { background-color: #f0f2f5; }
+
+.btn-cell { background-color: var(--accent); }
+.btn { display: inline-block; color: var(--on-accent); text-decoration: none; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+
+.pill { display: inline-block; padding: 0 8px; border-radius: 9px; font-size: 12px; line-height: 18px; font-weight: 700; color: #16191d; background-color: var(--sev-accent, #e1e4e8); }
+
+@media (prefers-color-scheme: dark) {
+  body { background-color: #1a1a2e !important; }
+  .ec { background: #16213e !important; }
+  .det, .hi { background: #1e2a3a !important; }
+  .det td { border-color: #2b3a50 !important; }
+  p, h2, h1, strong, td, th, span { color: #e0e0e0 !important; }
+  a { color: #6cb4ee !important; }
+  .btn { color: #ffffff !important; }
+  .tk, .tk h1, .tk p, .tk td, .tk strong, .tk span { color: #16191d !important; }
+}

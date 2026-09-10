@@ -1,0 +1,41 @@
+# Sample macro values for the HTML previews (python build.py --preview).
+# {EVENT.NSEVERITY} / {EVENT.SEVERITY} are set per preview from src/themes.yaml.
+
+severity: 4   # used for every preview that does not iterate over the severities
+
+macros:
+  "{HOST.NAME}": web-frontend-01
+  "{HOST.HOST}": web-frontend-01
+  "{HOST.IP}": 10.20.30.41
+  "{HOST.GROUPS}": Linux servers
+  "{TRIGGER.HOSTGROUP.NAME}": Linux servers
+  "{TRIGGER.ID}": "24567"
+  "{TRIGGER.SEVERITY}": High
+  "{EVENT.ID}": "11828588"
+  "{EVENT.NAME}": High CPU utilization (over 90% for 5m)
+  "{EVENT.TIME}": "14:32:07"
+  "{EVENT.DATE}": "2026.09.10"
+  "{EVENT.OPDATA}": "Current utilization: 96.4 %"
+  "{EVENT.TAGS}": "class:os, component:cpu, scope:performance, target:linux"
+  "{EVENT.DURATION}": 12m 41s
+  "{EVENT.AGE}": 4m 5s
+  "{EVENT.RECOVERY.TIME}": "14:44:48"
+  "{EVENT.RECOVERY.DATE}": "2026.09.10"
+  "{EVENT.ACK.STATUS}": "Yes"
+  "{EVENT.UPDATE.DATE}": "2026.09.10"
+  "{EVENT.UPDATE.TIME}": "14:36:12"
+  "{EVENT.UPDATE.MESSAGE}": Looking into it - runaway backup job.
+  "{EVENT.UPDATE.SEVERITY}": Average
+  "{USER.FULLNAME}": Jane Admin
+  "{DISCOVERY.DEVICE.IPADDRESS}": 10.20.30.77
+  "{DISCOVERY.DEVICE.DNS}": printer-3f.example.local
+  "{DISCOVERY.DEVICE.STATUS}": Up
+  "{DISCOVERY.RULE.NAME}": Local network
+  "{HOST.ID}": "10642"
+  "{SERVICE.NAME}": Online shop
+  "{SERVICE.ROOTCAUSE}": 'Host: "web-frontend-01" Problem name: "High CPU utilization (over 90% for 5m)" Severity: "High" Age: 4m 5s'
+  "{$ZABBIXHOST}": zabbix.example.com
+  "{$ZABBIXHOST_LINK}": https://zabbix.example.com
+  "{$ZABBIXHOST_LOGO}": logo.svg
+  "{$CUSTOM_MESSAGE_COMPANY}": ACME Corp - IT Operations
+  "{$ZABBIXHOST_LOVE}": Created with Open Source and ❤️

@@ -1,0 +1,37 @@
+# Build matrix: every language x variant becomes one Zabbix media type (one YAML file).
+#
+#   version          goes into media type names, file names and the default release tag (v<version>)
+#   zabbix_version   export format ("version" in the YAML header). Keep it at the oldest
+#                    supported Zabbix: newer versions convert older formats on import, so
+#                    a 7.0 export imports into 7.0, 7.2, 7.4 and later.
+#   name / file      patterns; placeholders: {version} {variant} {lang} {LANG}
+#   variants         flavour = directory in src/flavors/, logo = render the {$ZABBIXHOST_LOGO} image
+
+version: "1.2"
+zabbix_version: "7.0"
+
+name: "Email (HTML) modern V{version} {variant} ({LANG})"
+file: "zbx_html-modern-message_V{version}_{variant}_{LANG}.yaml"
+
+languages: [en, de, fr, es, pt]
+
+variants:
+  - id: standard
+    flavor: standard
+    logo: true
+    label: standard layout
+
+  - id: compact
+    flavor: compact
+    logo: true
+    label: compact layout
+
+  - id: standard-nologo
+    flavor: standard
+    logo: false
+    label: standard layout, no logo image
+
+  - id: compact-nologo
+    flavor: compact
+    logo: false
+    label: compact layout, no logo image

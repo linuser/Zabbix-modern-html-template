@@ -1,0 +1,46 @@
+/* Standard flavour: the V1.1 look - big coloured header, host box, details table, dark footer. */
+
+.page-cell { padding: 20px 10px; }
+.ec { max-width: 600px; width: 100%; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 0, 0, .08); }
+
+.hd { background-color: var(--accent); color: var(--on-accent); text-align: center; padding: 30px 20px; border-radius: 8px 8px 0 0; }
+.hd h1 { margin: 0; font-size: 24px; font-weight: 700; color: var(--on-accent); }
+.hd .hd-sub { margin: 8px 0 0; font-size: 14px; font-weight: 600; color: var(--on-accent); }
+
+.box-cell { padding: 20px; }
+.hi { background-color: var(--tint); border-left: 4px solid var(--accent); border-radius: 4px; }
+.box-inner { padding: 15px; }
+.box-title { margin: 0 0 12px; font-size: 15px; font-weight: 700; color: var(--ink); }
+.box-label { padding: 5px 0; color: #000000; font-size: 13px; width: 140px; vertical-align: top; }
+.box-value { padding: 5px 0; color: #000000; font-size: 14px; font-weight: 700; }
+
+.ct { padding: 0 20px; }
+.ct h2 { font-size: 16px; color: #000000; margin: 20px 0 10px; }
+.det { background: #f9f9fb; border-radius: 6px; overflow: hidden; }
+.det-label { padding: 6px 12px; color: #000000; font-size: 13px; width: 160px; border-bottom: 1px solid #f0f0f0; }
+.det-value { padding: 6px 12px; color: #000000; font-size: 13px; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
+
+.tags-cell { padding: 10px 20px 0; }
+.tags { margin: 0; font-size: 12px; color: #000000; }
+
+.btn-row { padding: 25px 20px; }
+
+.ft { background: #0f2b3d; color: #ffffff; text-align: center; padding: 25px 20px; border-radius: 0 0 8px 8px; }
+.ft.ft-nologo { padding: 16px 20px; }
+.logo { display: block; margin: 0 auto 8px; width: 140px; max-width: 140px; height: auto; border: 0; }
+.ft-brand { margin: 5px 0 0; font-size: 13px; color: #b7c0c7; }
+.ft-nologo .ft-brand { margin: 0; }
+
+.fn-cell { padding: 15px 20px; text-align: center; font-size: 11px; color: #999999; }
+.fn-cell p { margin: 0; }
+.fn-cell .fn-sent { margin: 5px 0 0; }
+.fn-link { color: #0A466A; text-decoration: none; }
+.company-cell { text-align: center; padding: 10px 20px; font-size: 13px; color: #777777; }
+.love-cell { text-align: center; padding: 5px 20px 20px; font-size: 11px; color: #aaaaaa; }
+.company-cell p, .love-cell p { margin: 0; }
+
+@media only screen and (max-width: 620px) {
+  .ec { width: 100% !important; margin: 0 !important; border-radius: 0 !important; }
+  .ct { padding: 15px !important; }
+  .hd h1 { font-size: 20px !important; }
+}

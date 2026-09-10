@@ -1,0 +1,11 @@
+# build output - produced by build.py / GitHub Actions, published as release assets
+dist/
+
+# end-to-end test results (mails + screenshots)
+test/e2e/output/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

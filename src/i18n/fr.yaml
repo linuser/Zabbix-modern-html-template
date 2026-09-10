@@ -1,0 +1,78 @@
+# Français (fr)
+# Texts used by src/messages.yaml and the flavour templates.
+# Every language must define exactly the keys of en.yaml - the build checks this.
+pre_problem: 'Hôte: {HOST.NAME}, Problème: {EVENT.NAME}'
+problem_detected: Problème Détecté
+affected_host: Hôte Concerné
+host: Hôte
+host_group: Groupe d'hôtes
+host_ip: IP de l'hôte
+incident_details: Détails de l'incident
+occurred_at: Survenu à
+date: Date
+problem: Problème
+severity: Sévérité
+operational_data: Données opérationnelles
+id: ID
+event_tags: 'Tags d''événement:'
+view_details: Voir les Détails
+zabbix_monitoring_system: Zabbix Monitoring System
+auto_generated: Ce message a été généré automatiquement par le système de surveillance Zabbix.
+sent_from: Envoyé depuis le serveur Zabbix sur
+pre_recovery: 'Problème Résolu: {HOST.NAME} — {EVENT.NAME}'
+problem_resolved: Problème Résolu
+resolution_details: Détails de la Résolution
+resolved_at: Résolu à
+original_problem: Problème d'origine
+duration: Durée
+pre_update: 'Mise à Jour du Problème: {EVENT.NAME} — {USER.FULLNAME}'
+problem_update: Mise à Jour du Problème
+update_details: Détails de la Mise à Jour
+updated_at: Mis à jour à
+update_message: Message de mise à jour
+updated_by: Mis à jour par
+acknowledgment_status: Statut d'acquittement
+pre_discovery: 'Nouvelle Découverte: {DISCOVERY.DEVICE.IPADDRESS}'
+new_discovery: Nouvelle Découverte
+discovery_event: Événement de Découverte
+discovered_host: Hôte Découvert
+ip_address: Adresse IP
+hostname: Nom d'hôte
+discovery_details: Détails de la Découverte
+detected_at: Détecté à
+status: Statut
+action: Action
+view_discovery_details: Voir les Détails de Découverte
+pre_autoregistration: 'Nouvelle Auto-Inscription: {HOST.HOST} ({HOST.IP})'
+new_auto_registration: Nouvelle Auto-Inscription
+host_registration: Inscription d'hôte
+registered_host: Hôte Inscrit
+auto_registration_details: Détails de l'Auto-Inscription
+registered_at: Inscrit à
+auto_registration_completed: Auto-inscription terminée
+pre_internal: 'Problème Interne: {HOST.NAME} — {EVENT.NAME}'
+internal_problem: ⚠️ Problème Interne
+problem_details: Détails du Problème
+pre_internal_recovery: 'Problème Interne Résolu: {HOST.NAME} — {EVENT.NAME}'
+internal_problem_resolved: ✅ Problème Interne Résolu
+pre_service: 'Notification de Service: {SERVICE.NAME} — {EVENT.SEVERITY}'
+service_notification: Notification de Service
+affected_service: Service Concerné
+service_name: Nom du Service
+root_cause: Cause racine
+service_details: Détails du Service
+view_service_details: Voir les Détails du Service
+pre_service_recovery: 'Service Rétabli: {SERVICE.NAME}'
+service_recovered: Service Rétabli
+service_status_restored: 'Statut du Service: Rétabli'
+restored_service: Service Rétabli
+current_status: Statut Actuel
+restored: Rétabli
+recovery_details: Détails du Rétablissement
+recovered_at: Rétabli à
+downtime_duration: Durée de l'interruption
+pre_service_update: 'Mise à Jour du Service: {SERVICE.NAME} — {EVENT.UPDATE.SEVERITY}'
+service_update: Mise à Jour du Service
+updated_service: Service Mis à Jour
+new_status: Nouveau Statut
+changed_at: Modifié à

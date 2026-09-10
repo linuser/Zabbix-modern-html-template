@@ -1,0 +1,78 @@
+# Español (es)
+# Texts used by src/messages.yaml and the flavour templates.
+# Every language must define exactly the keys of en.yaml - the build checks this.
+pre_problem: 'Host: {HOST.NAME}, Problema: {EVENT.NAME}'
+problem_detected: Problema Detectado
+affected_host: Host Afectado
+host: Host
+host_group: Grupo de Hosts
+host_ip: IP del Host
+incident_details: Detalles del Incidente
+occurred_at: Ocurrido a las
+date: Fecha
+problem: Problema
+severity: Severidad
+operational_data: Datos Operacionales
+id: ID
+event_tags: 'Tags del Evento:'
+view_details: Ver Detalles
+zabbix_monitoring_system: Zabbix Monitoring System
+auto_generated: Este mensaje fue generado automáticamente por el sistema de monitoreo Zabbix.
+sent_from: Enviado desde el servidor Zabbix en
+pre_recovery: 'Problema Resuelto: {HOST.NAME} — {EVENT.NAME}'
+problem_resolved: Problema Resuelto
+resolution_details: Detalles de la Resolución
+resolved_at: Resuelto a las
+original_problem: Problema Original
+duration: Duración
+pre_update: 'Actualización del Problema: {EVENT.NAME} — {USER.FULLNAME}'
+problem_update: Actualización del Problema
+update_details: Detalles de la Actualización
+updated_at: Actualizado a las
+update_message: Mensaje de Actualización
+updated_by: Actualizado por
+acknowledgment_status: Estado de Confirmación
+pre_discovery: 'Nuevo Descubrimiento: {DISCOVERY.DEVICE.IPADDRESS}'
+new_discovery: Nuevo Descubrimiento
+discovery_event: Evento de Descubrimiento
+discovered_host: Host Descubierto
+ip_address: Dirección IP
+hostname: Nombre de Host
+discovery_details: Detalles del Descubrimiento
+detected_at: Detectado a las
+status: Estado
+action: Acción
+view_discovery_details: Ver Detalles del Descubrimiento
+pre_autoregistration: 'Nuevo Auto-Registro: {HOST.HOST} ({HOST.IP})'
+new_auto_registration: Nuevo Auto-Registro
+host_registration: Registro de Host
+registered_host: Host Registrado
+auto_registration_details: Detalles del Auto-Registro
+registered_at: Registrado a las
+auto_registration_completed: Auto-registro completado
+pre_internal: 'Problema Interno: {HOST.NAME} — {EVENT.NAME}'
+internal_problem: ⚠️ Problema Interno
+problem_details: Detalles del Problema
+pre_internal_recovery: 'Problema Interno Resuelto: {HOST.NAME} — {EVENT.NAME}'
+internal_problem_resolved: ✅ Problema Interno Resuelto
+pre_service: 'Notificación de Servicio: {SERVICE.NAME} — {EVENT.SEVERITY}'
+service_notification: Notificación de Servicio
+affected_service: Servicio Afectado
+service_name: Nombre del Servicio
+root_cause: Causa raíz
+service_details: Detalles del Servicio
+view_service_details: Ver Detalles del Servicio
+pre_service_recovery: 'Servicio Recuperado: {SERVICE.NAME}'
+service_recovered: Servicio Recuperado
+service_status_restored: 'Estado del Servicio: Recuperado'
+restored_service: Servicio Recuperado
+current_status: Estado Actual
+restored: Recuperado
+recovery_details: Detalles de la Recuperación
+recovered_at: Recuperado a las
+downtime_duration: Duración de la Interrupción
+pre_service_update: 'Actualización del Servicio: {SERVICE.NAME} — {EVENT.UPDATE.SEVERITY}'
+service_update: Actualización del Servicio
+updated_service: Servicio Actualizado
+new_status: Nuevo Estado
+changed_at: Modificado a las

@@ -1,0 +1,31 @@
+zabbix_export:
+  version: '{{ zabbix_version }}'
+  media_types:
+  - name: {{ name | yaml_str }}
+    description: |-
+      Modern HTML email templates V{{ version }} ({{ variant.label }}) for Zabbix {{ zabbix_version }} and newer - Zabbix severity colours, dark mode, Outlook compatible, mobile responsive.
+
+      After import: configure SMTP settings (server, port, authentication) and set global macros:
+      - {$ZABBIXHOST} = your Zabbix hostname
+      - {$ZABBIXHOST_LINK} = https://your-zabbix-host
+{% if variant.logo %}
+      - {$ZABBIXHOST_LOGO} = https://your-zabbix-host/assets/img/zabbix_logo.png
+{% endif %}
+      - {$CUSTOM_MESSAGE_COMPANY} = your company name
+      - {$ZABBIXHOST_LOVE} = footer text
+
+      More info: https://github.com/linuser/Zabbix-modern-html-template
+    type: EMAIL
+    smtp_server: localhost
+    smtp_port: '25'
+    smtp_helo: localhost
+    smtp_email: zabbix@localhost
+    message_format: HTML
+    message_templates:
+{% for m in messages %}
+    - event_source: {{ m.event_source }}
+      operation_mode: {{ m.operation_mode }}
+      subject: {{ m.subject | yaml_str }}
+      message: |
+        {{ m.html | indent(8) }}
+{% endfor %}
