@@ -103,7 +103,7 @@ Verify: open `https://your-zabbix-host/assets/img/zabbix_logo.png` in a browser.
 2. Select the V1.1 YAML file
 3. Enable **"Update existing"**
 4. Click **Import**
-5. **Re-enter your SMTP settings** (server, port, auth) — the import resets them to placeholders
+5. **Re-enter your SMTP settings** — the import resets the complete SMTP configuration to placeholders: server, helo and email become `localhost`, authentication is switched off and **username and password are removed**. Until you re-enter them, no notifications are sent through this media type — note your settings and have the SMTP password at hand before importing.
 
 ### 4. Configure SMTP
 
@@ -142,6 +142,13 @@ Go to **Administration → Macros** and create:
 
 Click **Test** in the media type row under **Alerts → Media types**.
 
+The test dialog sends exactly the subject and message you type in — not the message templates. To preview a template with your real SMTP settings without changing the media type:
+
+1. Copy the `message` of a template from the YAML file (e.g. *Problem*)
+2. Paste it into the **Message** field of the test dialog and click **Test**
+
+Macros such as `{HOST.NAME}` or `{$ZABBIXHOST_LOGO}` stay unresolved in a test mail, so the logo is missing — that is expected.
+
 ---
 
 ## Troubleshooting
@@ -152,6 +159,7 @@ Click **Test** in the media type row under **Alerts → Media types**.
 | Logo not showing | The logo must be placed inside your **Nginx/Apache document root** (check `root` directive in your webserver config). For Zabbix 7.4 with Nginx this is typically `/usr/share/zabbix/ui/`, so place the logo in `/usr/share/zabbix/ui/assets/img/`. Paths outside the document root (e.g. `/usr/share/zabbix/local/`) return 404. Also check: URL accessible in browser? `{$ZABBIXHOST_LOGO}` macro correct? File permissions `644`? Email clients may block external images by default. |
 | Macros show as `{HOST.NAME}` | Global macros (`{$...}`): check Administration → Macros. Zabbix macros: only replaced in real events, not in media type test. |
 | Text unreadable in Dark Mode | Update to V1.1 (CSS fix for `td`/`th`/`span` selectors). |
+| Bright lines between the detail rows in Dark Mode | Known issue in V1.1: the row separators (`#f0f0f0`) keep their light colour in Dark Mode. |
 | Emails in spam | Not a template issue. Configure SPF, DKIM and DMARC for your domain. |
 
 ## Uninstall
