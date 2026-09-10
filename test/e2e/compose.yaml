@@ -1,0 +1,73 @@
+# End-to-end test stack: a real Zabbix that sends every media type variant to
+# Mailpit, plus a runner that drives the scenario and screenshots the mails.
+# Use test/e2e/e2e.sh - see docs/TESTING.md.
+#
+# ZABBIX_TAG selects the Zabbix image tag (default: the oldest supported version):
+#   ZABBIX_TAG=alpine-7.4.14 test/e2e/e2e.sh run
+#   ZABBIX_TAG=alpine-trunk  test/e2e/e2e.sh run      # development branch (next major)
+name: zbx-mail-e2e
+
+x-db: &db
+  POSTGRES_USER: zabbix
+  POSTGRES_PASSWORD: zabbix
+  POSTGRES_DB: zabbix
+
+services:
+  postgres:
+    image: postgres:16-alpine   # supported by Zabbix 7.0 and 7.4
+    environment: *db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zabbix"]
+      interval: 5s
+      retries: 30
+
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:${ZABBIX_TAG:-alpine-7.0.30}
+    environment:
+      <<: *db
+      DB_SERVER_HOST: postgres
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-pgsql:${ZABBIX_TAG:-alpine-7.0.30}
+    environment:
+      <<: *db
+      DB_SERVER_HOST: postgres
+      ZBX_SERVER_HOST: zabbix-server
+      PHP_TZ: Europe/Berlin
+    ports: ["${ZBX_WEB_PORT:-8080}:8080"]
+    depends_on: [zabbix-server]
+
+  # SMTP catcher with web UI and API: http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    environment:
+      MP_MAX_MESSAGES: "5000"
+    ports: ["${MAILPIT_PORT:-8025}:8025"]
+
+  # Serves the logo referenced by {$ZABBIXHOST_LOGO}, so mails opened in Mailpit show it.
+  assets:
+    image: nginx:stable-alpine
+    volumes:
+      - ../../src/preview/logo.svg:/usr/share/nginx/html/logo.svg:ro
+    ports: ["${ASSETS_PORT:-8081}:80"]
+
+  runner:
+    profiles: [runner]
+    build:
+      context: ../..
+      dockerfile: test/e2e/runner/Dockerfile
+    shm_size: 1gb   # Chromium needs more than Docker's default 64 MB
+    environment:
+      ZBX_WEB_PORT: ${ZBX_WEB_PORT:-8080}
+      MAILPIT_PORT: ${MAILPIT_PORT:-8025}
+      ASSETS_PORT: ${ASSETS_PORT:-8081}
+      E2E_VARIANTS: ${E2E_VARIANTS:-}        # e.g. "compact,standard" (default: all from build.yaml)
+      E2E_LANGS: ${E2E_LANGS:-}              # e.g. "en,de" (default: all)
+      E2E_SCREENSHOTS: ${E2E_SCREENSHOTS:-none}   # e.g. "desktop,mobile,dark" (the mails are always in Mailpit)
+      E2E_TIMEOUT: ${E2E_TIMEOUT:-180}       # seconds to wait for each batch of mails
+      E2E_SERVICE_SYNC_WAIT: ${E2E_SERVICE_SYNC_WAIT:-70}   # > the server's ServiceManagerSyncFrequency (60)
+    volumes:
+      - ../..:/work:ro
+      - ./output:/output

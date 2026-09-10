@@ -1,0 +1,55 @@
+# Runs the Docker end-to-end test (real Zabbix + Mailpit, see docs/TESTING.md) against
+# every supported Zabbix version and uploads every received mail plus screenshots as
+# the "e2e-output-<version>" artifact.
+#
+# alpine-trunk is Zabbix's development branch (the next major release). It may break
+# at any time, so it does not fail the workflow - it is an early warning.
+name: E2E
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "src/**"
+      - "build.py"
+      - "build.yaml"
+      - "requirements.txt"
+      - "test/e2e/**"
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {zabbix: alpine-7.0.30, experimental: false}
+          - {zabbix: alpine-7.4.14, experimental: false}
+          - {zabbix: alpine-trunk, experimental: true}
+    env:
+      ZABBIX_TAG: ${{ matrix.zabbix }}
+      E2E_SCREENSHOTS: desktop,mobile,dark
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run end-to-end test
+        run: test/e2e/e2e.sh run
+
+      - name: Zabbix server log
+        if: failure()
+        run: docker compose -f test/e2e/compose.yaml logs --no-color zabbix-server | tail -n 200
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-output-${{ matrix.zabbix }}
+          path: test/e2e/output/
+
+      - name: Tear down
+        if: always()
+        run: test/e2e/e2e.sh down
