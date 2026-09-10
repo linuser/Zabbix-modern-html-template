@@ -9,11 +9,30 @@ Modern, responsive HTML email templates for **Zabbix 7.4** with Dark Mode suppor
 
 ---
 
+## Preview
+
+<p align="center">
+  <img src="screenshots/problem.png" alt="Problem notification preview" width="440">
+</p>
+
+All 10 templates, rendered with sample data:
+
+| Trigger | Service | Other |
+|---------|---------|-------|
+| [Problem](screenshots/problem.png) | [Service Problem](screenshots/service-problem.png) | [Discovery](screenshots/discovery.png) |
+| [Recovery](screenshots/recovery.png) | [Service Recovery](screenshots/service-recovery.png) | [Autoregistration](screenshots/autoregistration.png) |
+| [Update](screenshots/update.png) | [Service Update](screenshots/service-update.png) | [Internal Problem](screenshots/internal-problem.png) · [Internal Recovery](screenshots/internal-recovery.png) |
+
+> The logo in the footer is a placeholder for these previews; live emails use your `{$ZABBIXHOST_LOGO}` macro.
+
+---
+
 ## Features
 
 | Feature | V1.0 (Original) | V1.1 |
 |---------|:---:|:---:|
 | Outlook compatible (table layout) | ❌ | ✅ |
+| Rounded buttons in Outlook (VML) | ❌ | ✅ |
 | Inline CSS | ❌ | ✅ |
 | Dark Mode | ❌ | ✅ |
 | System Fonts | ❌ | ✅ |
