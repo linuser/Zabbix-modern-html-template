@@ -43,6 +43,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -56,7 +57,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Host: {HOST.NAME}, Problem: {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#dc3545;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -123,6 +124,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -136,7 +138,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problem Behoben: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -202,6 +204,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -215,7 +218,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problem-Update: {EVENT.NAME} — {USER.FULLNAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -281,6 +284,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -294,7 +298,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Neue Entdeckung: {DISCOVERY.DEVICE.IPADDRESS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#0275d8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -359,6 +363,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -372,7 +377,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Neue Auto-Registrierung: {HOST.HOST} ({HOST.IP})</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -436,6 +441,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -449,7 +455,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Internes Problem: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#e6a800;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -514,6 +520,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -527,7 +534,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Internes Problem behoben: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -590,6 +597,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -603,7 +611,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Service-Benachrichtigung: {SERVICE.NAME} — {SERVICE.STATUS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#f0ad4e;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -667,6 +675,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -680,7 +689,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Service wiederhergestellt: {SERVICE.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -745,6 +754,7 @@ zabbix_export:
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
         .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -758,7 +768,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Service-Update: {SERVICE.NAME} — {SERVICE.STATUS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
