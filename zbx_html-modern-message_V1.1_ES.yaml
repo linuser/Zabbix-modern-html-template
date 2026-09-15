@@ -42,6 +42,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -55,7 +57,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Host: {HOST.NAME}, Problema: {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#dc3545;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -84,7 +86,7 @@ zabbix_export:
         </table>
         </td></tr>
         <tr><td style="padding:10px 20px 0"><p style="margin:0;font-size:12px;color:#000"><strong>Tags del Evento:</strong> {EVENT.TAGS}</p></td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#dc3545;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#dc3545" fillcolor="#dc3545"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="background:#dc3545;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -121,6 +123,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -134,7 +138,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problema Resuelto: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -162,7 +166,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#28a745" fillcolor="#28a745"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="background:#28a745;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -199,6 +203,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -212,7 +218,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Actualización del Problema: {EVENT.NAME} — {USER.FULLNAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -240,7 +246,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#17a2b8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#17a2b8" fillcolor="#17a2b8"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="background:#17a2b8;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -277,6 +283,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -290,7 +298,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Nuevo Descubrimiento: {DISCOVERY.DEVICE.IPADDRESS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#0275d8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -317,7 +325,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#0275d8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Descubrimiento</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view" style="height:42px;v-text-anchor:middle;width:280px;" arcsize="15%" strokecolor="#0275d8" fillcolor="#0275d8"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles del Descubrimiento</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view" class="btn" style="background:#0275d8;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Descubrimiento</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -354,6 +362,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -367,7 +377,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Nuevo Auto-Registro: {HOST.HOST} ({HOST.IP})</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -393,7 +403,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=host.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/zabbix.php?action=host.list" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#28a745" fillcolor="#28a745"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=host.list" class="btn" style="background:#28a745;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -430,6 +440,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -443,7 +455,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problema Interno: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#e6a800;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -470,7 +482,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#e6a800;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#e6a800" fillcolor="#e6a800"><w:anchorlock/><center style="color:#333;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="background:#e6a800;border-radius:6px;color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -507,6 +519,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -520,7 +534,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Problema Interno Resuelto: {HOST.NAME} — {EVENT.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -545,7 +559,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID del Trigger</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{TRIGGER.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" style="height:42px;v-text-anchor:middle;width:160px;" arcsize="15%" strokecolor="#28a745" fillcolor="#28a745"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}" class="btn" style="background:#28a745;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -582,6 +596,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -595,7 +611,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Notificación de Servicio: {SERVICE.NAME} — {SERVICE.STATUS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#f0ad4e;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -621,7 +637,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#f0ad4e;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" style="height:42px;v-text-anchor:middle;width:235px;" arcsize="15%" strokecolor="#f0ad4e" fillcolor="#f0ad4e"><w:anchorlock/><center style="color:#333;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles del Servicio</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="background:#f0ad4e;border-radius:6px;color:#333;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -658,6 +674,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -671,7 +689,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Servicio Recuperado: {SERVICE.NAME}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#28a745;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -698,7 +716,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#28a745;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" style="height:42px;v-text-anchor:middle;width:235px;" arcsize="15%" strokecolor="#28a745" fillcolor="#28a745"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles del Servicio</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="background:#28a745;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
@@ -735,6 +753,8 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
+        .wr {background-color:#1a1a2e !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -748,7 +768,7 @@ zabbix_export:
         </head>
         <body style="margin:0;padding:0;background-color:#f0f2f5">
         <div style="display:none;max-height:0;overflow:hidden;color:#f0f2f5;font-size:0;line-height:0">Actualización del Servicio: {SERVICE.NAME} — {SERVICE.STATUS}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wr" style="background-color:#f0f2f5">
         <tr><td align="center" style="padding:20px 10px">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec" style="max-width:600px;width:100%;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)">
         <tr><td class="hd" style="background:#17a2b8;color:#fff;text-align:center;padding:30px 20px;border-radius:8px 8px 0 0">
@@ -773,7 +793,7 @@ zabbix_export:
         <tr><td style="padding:6px 12px;color:#000;font-size:13px;width:160px;border-bottom:1px solid #f0f0f0"><strong>ID</strong></td><td style="padding:6px 12px;color:#000;font-size:13px;font-weight:600;border-bottom:1px solid #f0f0f0">{EVENT.ID}</td></tr>
         </table>
         </td></tr>
-        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="background:#17a2b8;border-radius:6px;margin:5px;padding:0"><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a></td><td style="width:10px"></td></tr></table></td></tr>
+        <tr><td style="padding:25px 20px"><table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0"><!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" style="height:42px;v-text-anchor:middle;width:235px;" arcsize="15%" strokecolor="#17a2b8" fillcolor="#17a2b8"><w:anchorlock/><center style="color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;font-weight:bold;">Ver Detalles del Servicio</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href="{$ZABBIXHOST_LINK}/zabbix.php?action=service.list" class="btn" style="background:#17a2b8;border-radius:6px;color:#fff;display:inline-block;padding:12px 24px;text-decoration:none;font-size:14px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">Ver Detalles del Servicio</a><!--<![endif]--></td><td style="width:10px"></td></tr></table></td></tr>
         <tr><td style="background:#0f2b3d;color:#fff;text-align:center;padding:25px 20px;border-radius:0 0 8px 8px">
         <img src="{$ZABBIXHOST_LOGO}" alt="Logo" style="max-width:140px;height:auto;margin-bottom:8px;">
         <p style="margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.7)">Zabbix Monitoring System</p>
