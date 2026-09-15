@@ -42,6 +42,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -121,6 +122,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -199,6 +201,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -277,6 +280,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -354,6 +358,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -430,6 +435,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -507,6 +513,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -582,6 +589,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -658,6 +666,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
@@ -735,6 +744,7 @@ zabbix_export:
         body {background-color:#1a1a2e !important;}
         .ec {background:#16213e !important;}
         .det,.hi {background:#1e2a3a !important;}
+        .det td {border-color:#2a3a4d !important;}
         p,h2,h1,strong,td,th,span {color:#e0e0e0 !important;}
         a {color:#6cb4ee !important;}
         .btn {color:#fff !important;}
