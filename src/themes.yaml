@@ -1,0 +1,40 @@
+# Colour sets, referenced from src/messages.yaml (theme: <name>).
+#
+# Every theme provides four tokens that the flavour CSS uses as var(--<token>):
+#   accent      header, button and accent line
+#   on-accent   text on accent
+#   ink         coloured text on white
+#   tint        light panel background
+#
+# "severity: true" themes take accent/ink/tint from the event severity at send
+# time (see "severity" below). "fallback" is used whenever Zabbix leaves the
+# macro unresolved, e.g. when you press "Test" on the media type.
+#
+# The build warns if text/background combinations fall below WCAG contrast.
+
+severity:
+  # Numeric severity macro (0-5) the colours are picked from.
+  macro: EVENT.NSEVERITY
+  # Text colour on every severity accent.
+  on-accent: "#16191d"
+  # Zabbix default severity colours (Administration > General > Trigger displaying
+  # options). accent is the official colour; ink and tint are derived shades.
+  levels:
+    5: {name: Disaster,       accent: "#E45959", ink: "#B32D2D", tint: "#FDECEC"}
+    4: {name: High,           accent: "#E97659", ink: "#AF4424", tint: "#FDF0EC"}
+    3: {name: Average,        accent: "#FFA059", ink: "#A35200", tint: "#FFF3E9"}
+    2: {name: Warning,        accent: "#FFC859", ink: "#806000", tint: "#FFF8E6"}
+    1: {name: Information,    accent: "#7499FF", ink: "#2F5BD3", tint: "#EEF2FF"}
+    0: {name: Not classified, accent: "#97AAB3", ink: "#526670", tint: "#F1F4F5"}
+
+themes:
+  problem:
+    severity: true
+    fallback: {accent: "#E45959", ink: "#B32D2D", tint: "#FDECEC"}
+  service-problem:
+    severity: true
+    fallback: {accent: "#f0ad4e", ink: "#8a5a00", tint: "#fff8e1"}
+  recovery:  {accent: "#28a745", on-accent: "#ffffff", ink: "#1e7b34", tint: "#f0fff4"}
+  update:    {accent: "#17a2b8", on-accent: "#ffffff", ink: "#117a8b", tint: "#e8f4f8"}
+  discovery: {accent: "#0275d8", on-accent: "#ffffff", ink: "#0262b5", tint: "#e8f3fc"}
+  internal:  {accent: "#e6a800", on-accent: "#16191d", ink: "#7a5a00", tint: "#fff8e1"}

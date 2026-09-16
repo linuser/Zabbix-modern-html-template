@@ -1,0 +1,26 @@
+{#- Reusable pieces. Import with:  {% import "templates/components.html.j2" as ui with context %} -#}
+
+{#- A value from src/messages.yaml: macro / plain text, {text: key} or {pill: macro}. -#}
+{% macro value(v) -%}
+{%- if v is mapping and v.pill is defined -%}
+<span class="pill tk">{{ v.pill }}</span>
+{%- elif v is mapping -%}
+{{ t[v.text] }}
+{%- else -%}
+{{ v }}
+{%- endif -%}
+{%- endmacro %}
+
+{#- Bulletproof button.
+    Classic Outlook for Windows renders with Word, which ignores border-radius, so it
+    gets a VML roundrect; every other client gets a normal rounded link. The VML sits
+    in a conditional comment where the build cannot inline CSS, so all sizes are
+    passed in here and used for both. -#}
+{% macro button(label, url, size, pad_y, pad_x, radius, align) -%}
+{%- set line = size + 6 -%}
+{%- set height = line + 2 * pad_y -%}
+{%- set width = ((label | length) * size * 0.6 + 2 * pad_x) / 10 -%}
+{%- set width = (width | round(0, 'ceil') | int) * 10 -%}
+<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ url }}" style="height:{{ height }}px;v-text-anchor:middle;width:{{ width }}px;" arcsize="{{ (radius * 200 / height) | round | int }}%" stroke="f" fillcolor="{{ theme.attr('accent') }}"><w:anchorlock/><center style="color:{{ theme.attr('on-accent') }};font-family:'Segoe UI',Arial,sans-serif;font-size:{{ size }}px;font-weight:bold;">{{ label }}</center></v:roundrect><![endif]-->
+<!--[if !mso]><!--><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="{{ align }}"><tr><td class="btn-cell" align="center" bgcolor="{{ theme.attr('accent') }}" style="border-radius:{{ radius }}px"><a href="{{ url }}" class="btn{{ ' tk' if theme.dark_text }}" style="padding:{{ pad_y }}px {{ pad_x }}px;font-size:{{ size }}px;line-height:{{ line }}px;border-radius:{{ radius }}px">{{ label }}</a></td></tr></table><!--<![endif]-->
+{%- endmacro %}

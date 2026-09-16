@@ -1,0 +1,62 @@
+{#- Standard flavour: the V1.1 layout. Look: style.css in this directory. -#}
+{% extends "templates/base.html.j2" %}
+{% import "templates/components.html.j2" as ui with context %}
+{% set tk = " tk" if theme.dark_text else "" %}
+{% block content %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="page">
+<tr><td align="center" class="page-cell">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec">
+
+<tr><td class="hd{{ tk }}" align="center" bgcolor="{{ theme.attr('accent') }}">
+<h1>{{ t[msg.title] }}</h1>
+<p class="hd-sub">{{ ui.value(msg.subtitle) }}</p>
+</td></tr>
+
+<tr><td class="box-cell">
+<table class="hi" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><td class="box-inner">
+<p class="box-title">{{ t[msg.box.title] }}</p>
+<table role="presentation" cellpadding="0" cellspacing="0">
+{% for label, v in msg.box.rows %}
+<tr><td class="box-label"><strong>{{ t[label] }}</strong></td><td class="box-value">{{ ui.value(v) }}</td></tr>
+{% endfor %}
+</table>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td class="ct">
+<h2>{{ t[msg.details.title] }}</h2>
+<table class="det" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+{% for label, v in msg.details.rows %}
+<tr><td class="det-label"><strong>{{ t[label] }}</strong></td><td class="det-value">{{ ui.value(v) }}</td></tr>
+{% endfor %}
+</table>
+</td></tr>
+
+{% if msg.tags %}
+<tr><td class="tags-cell"><p class="tags"><strong>{{ t.event_tags }}</strong> {EVENT.TAGS}</p></td></tr>
+{% endif %}
+
+<tr><td align="center" class="btn-row">
+{{ ui.button(t[msg.button.label], msg.button.url, size=14, pad_y=12, pad_x=24, radius=6, align="center") }}
+</td></tr>
+
+<tr><td class="ft{{ '' if logo else ' ft-nologo' }}" align="center">
+{% if logo %}
+<img class="logo" src="{$ZABBIXHOST_LOGO}" alt="Logo" width="140">
+{% endif %}
+<p class="ft-brand">{{ t.zabbix_monitoring_system }}</p>
+</td></tr>
+
+<tr><td class="fn-cell">
+<p>{{ t.auto_generated }}</p>
+<p class="fn-sent">{{ t.sent_from }} <a href="{$ZABBIXHOST_LINK}" class="fn-link">{$ZABBIXHOST}</a></p>
+</td></tr>
+<tr><td class="company-cell"><p>{$CUSTOM_MESSAGE_COMPANY}</p></td></tr>
+<tr><td class="love-cell"><p>{$ZABBIXHOST_LOVE}</p></td></tr>
+
+</table>
+</td></tr>
+</table>
+{% endblock %}

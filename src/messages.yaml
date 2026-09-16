@@ -1,0 +1,234 @@
+# The ten notification messages of the media type - one entry per Zabbix
+# message template (event_source + operation_mode).
+#
+# Every flavour renders this same data, so a row added here shows up in all
+# flavours and languages.
+#
+#   preheader, title, box.title, details.title, row labels, button.label
+#                   keys in src/i18n/<lang>.yaml
+#   subtitle, row values
+#                   Zabbix macros / plain text (rendered as is), or
+#                   {text: <key>}    translated text from src/i18n
+#                   {pill: <macro>}  badge coloured by the event severity
+#   theme           colour set from src/themes.yaml
+#   tags            show {EVENT.TAGS} below the details (default: false)
+#   subject         e-mail subject (not translated, as in V1.1)
+
+- event_source: TRIGGERS
+  operation_mode: PROBLEM
+  subject: "Problem: {EVENT.NAME}"
+  theme: problem
+  preheader: pre_problem
+  title: problem_detected
+  subtitle: "{EVENT.SEVERITY}"
+  box:
+    title: affected_host
+    rows: &host_rows
+      - [host, "{HOST.NAME}"]
+      - [host_group, "{TRIGGER.HOSTGROUP.NAME}"]
+      - [host_ip, "{HOST.IP}"]
+  details:
+    title: incident_details
+    rows:
+      - [occurred_at, "{EVENT.TIME}"]
+      - [date, "{EVENT.DATE}"]
+      - [problem, "{EVENT.NAME}"]
+      - [severity, {pill: "{EVENT.SEVERITY}"}]
+      - [operational_data, "{EVENT.OPDATA}"]
+      - [id, "{EVENT.ID}"]
+  tags: true
+  button:
+    label: view_details
+    url: &trigger_url "{$ZABBIXHOST_LINK}/tr_events.php?triggerid={TRIGGER.ID}&eventid={EVENT.ID}"
+
+- event_source: TRIGGERS
+  operation_mode: RECOVERY
+  subject: "Resolved in {EVENT.DURATION}: {EVENT.NAME}"
+  theme: recovery
+  preheader: pre_recovery
+  title: problem_resolved
+  subtitle: "{EVENT.DURATION}"
+  box: {title: affected_host, rows: *host_rows}
+  details:
+    title: resolution_details
+    rows:
+      - [resolved_at, "{EVENT.RECOVERY.TIME}"]
+      - [date, "{EVENT.RECOVERY.DATE}"]
+      - [original_problem, "{EVENT.NAME}"]
+      - [duration, "{EVENT.DURATION}"]
+      - [severity, {pill: "{EVENT.SEVERITY}"}]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_details, url: *trigger_url}
+
+- event_source: TRIGGERS
+  operation_mode: UPDATE
+  subject: "Updated problem in {EVENT.AGE}: {EVENT.NAME}"
+  theme: update
+  preheader: pre_update
+  title: problem_update
+  subtitle: "{EVENT.ACK.STATUS}"
+  box:
+    title: affected_host
+    rows: &host_rows_short
+      - [host, "{HOST.NAME}"]
+      - [host_group, "{TRIGGER.HOSTGROUP.NAME}"]
+  details:
+    title: update_details
+    rows:
+      - [updated_at, "{EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}"]
+      - [problem, "{EVENT.NAME}"]
+      - [update_message, "{EVENT.UPDATE.MESSAGE}"]
+      - [updated_by, "{USER.FULLNAME}"]
+      - [acknowledgment_status, "{EVENT.ACK.STATUS}"]
+      - [severity, {pill: "{EVENT.SEVERITY}"}]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_details, url: *trigger_url}
+
+- event_source: DISCOVERY
+  operation_mode: PROBLEM
+  subject: "Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}"
+  theme: discovery
+  preheader: pre_discovery
+  title: new_discovery
+  subtitle: {text: discovery_event}
+  box:
+    title: discovered_host
+    rows:
+      - [ip_address, "{DISCOVERY.DEVICE.IPADDRESS}"]
+      - [hostname, "{DISCOVERY.DEVICE.DNS}"]
+      - [host_group, "{DISCOVERY.RULE.NAME}"]
+  details:
+    title: discovery_details
+    rows:
+      - [detected_at, "{EVENT.TIME}"]
+      - [date, "{EVENT.DATE}"]
+      - [status, "{DISCOVERY.DEVICE.STATUS}"]
+      - [action, "{DISCOVERY.RULE.NAME}"]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_discovery_details, url: "{$ZABBIXHOST_LINK}/zabbix.php?action=discovery.view"}
+
+- event_source: AUTOREGISTRATION
+  operation_mode: PROBLEM
+  subject: "Autoregistration: {HOST.HOST}"
+  theme: recovery
+  preheader: pre_autoregistration
+  title: new_auto_registration
+  subtitle: {text: host_registration}
+  box:
+    title: registered_host
+    rows:
+      - [hostname, "{HOST.HOST}"]
+      - [ip_address, "{HOST.IP}"]
+      - [host_group, "{HOST.GROUPS}"]
+  details:
+    title: auto_registration_details
+    rows:
+      - [registered_at, "{EVENT.TIME}"]
+      - [date, "{EVENT.DATE}"]
+      - [action, {text: auto_registration_completed}]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_details, url: "{$ZABBIXHOST_LINK}/zabbix.php?action=host.list"}
+
+- event_source: INTERNAL
+  operation_mode: PROBLEM
+  subject: "Internal: {EVENT.NAME}"
+  theme: internal
+  preheader: pre_internal
+  title: internal_problem
+  subtitle: "{HOST.NAME}"
+  # Internal events come from items, LLD rules or triggers - only macros that all of
+  # them resolve ({TRIGGER.*} stays empty for items and LLD rules).
+  box:
+    title: affected_host
+    rows: &internal_host_rows
+      - [host, "{HOST.NAME}"]
+      - [host_ip, "{HOST.IP}"]
+  details:
+    title: problem_details
+    rows:
+      - [problem, "{EVENT.NAME}"]
+      - [occurred_at, "{EVENT.TIME} {EVENT.DATE}"]
+      - [id, "{EVENT.ID}"]
+  button:
+    label: view_details
+    url: &host_items_url "{$ZABBIXHOST_LINK}/zabbix.php?action=item.list&context=host&filter_hostids%5B%5D={HOST.ID}&filter_set=1"
+
+- event_source: INTERNAL
+  operation_mode: RECOVERY
+  subject: "Internal resolved: {EVENT.NAME}"
+  theme: recovery
+  preheader: pre_internal_recovery
+  title: internal_problem_resolved
+  subtitle: "{HOST.NAME}"
+  box: {title: affected_host, rows: *internal_host_rows}
+  details:
+    title: resolution_details
+    rows:
+      - [resolved_at, "{EVENT.RECOVERY.TIME} {EVENT.RECOVERY.DATE}"]
+      - [problem, "{EVENT.NAME}"]
+      - [duration, "{EVENT.DURATION}"]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_details, url: *host_items_url}
+
+- event_source: SERVICE
+  operation_mode: PROBLEM
+  subject: 'Service "{SERVICE.NAME}" problem: {EVENT.NAME}'
+  theme: service-problem
+  preheader: pre_service
+  title: service_notification
+  subtitle: "{EVENT.SEVERITY}"
+  box:
+    title: affected_service
+    rows:
+      - [service_name, "{SERVICE.NAME}"]
+      - [root_cause, "{SERVICE.ROOTCAUSE}"]
+  details:
+    title: service_details
+    rows:
+      - [occurred_at, "{EVENT.TIME}"]
+      - [date, "{EVENT.DATE}"]
+      - [severity, {pill: "{EVENT.SEVERITY}"}]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_service_details, url: &service_url "{$ZABBIXHOST_LINK}/zabbix.php?action=service.list"}
+
+- event_source: SERVICE
+  operation_mode: RECOVERY
+  subject: 'Service "{SERVICE.NAME}" resolved in {EVENT.DURATION}: {EVENT.NAME}'
+  theme: recovery
+  preheader: pre_service_recovery
+  title: service_recovered
+  subtitle: {text: service_status_restored}
+  box:
+    title: restored_service
+    rows:
+      - [service_name, "{SERVICE.NAME}"]
+      - [current_status, {text: restored}]
+  details:
+    title: recovery_details
+    rows:
+      - [recovered_at, "{EVENT.RECOVERY.TIME}"]
+      - [date, "{EVENT.RECOVERY.DATE}"]
+      - [downtime_duration, "{EVENT.DURATION}"]
+      - [severity, {pill: "{EVENT.SEVERITY}"}]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_service_details, url: *service_url}
+
+- event_source: SERVICE
+  operation_mode: UPDATE
+  subject: 'Changed "{SERVICE.NAME}" service status to {EVENT.UPDATE.SEVERITY} in {EVENT.AGE}'
+  theme: update
+  preheader: pre_service_update
+  title: service_update
+  subtitle: "{EVENT.UPDATE.SEVERITY}"
+  box:
+    title: updated_service
+    rows:
+      - [service_name, "{SERVICE.NAME}"]
+      - [new_status, "{EVENT.UPDATE.SEVERITY}"]
+  details:
+    title: update_details
+    rows:
+      - [changed_at, "{EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}"]
+      - [root_cause, "{SERVICE.ROOTCAUSE}"]
+      - [id, "{EVENT.ID}"]
+  button: {label: view_service_details, url: *service_url}

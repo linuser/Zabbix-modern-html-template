@@ -1,0 +1,66 @@
+{#- Compact flavour: the two boxes of the standard flavour (host, details) with less
+    whitespace, a slim header and a slim footer. Look: style.css in this directory. -#}
+{% extends "templates/base.html.j2" %}
+{% import "templates/components.html.j2" as ui with context %}
+{% set tk = " tk" if theme.dark_text else "" %}
+{% block content %}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="page">
+<tr><td align="center" class="page-cell">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" class="ec">
+
+<tr><td class="hd{{ tk }}" bgcolor="{{ theme.attr('accent') }}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td class="hl"><h1>{{ t[msg.title] }}</h1></td>
+<td class="hs" align="right">{{ ui.value(msg.subtitle) }}</td>
+</tr></table>
+</td></tr>
+
+<tr><td class="ct">
+<table class="hi" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><td class="box-inner">
+<p class="box-title">{{ t[msg.box.title] }}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+{% for label, v in msg.box.rows %}
+<tr><td class="lb">{{ t[label] }}</td><td class="val">{{ ui.value(v) }}</td></tr>
+{% endfor %}
+</table>
+</td></tr>
+</table>
+
+<p class="det-title">{{ t[msg.details.title] }}</p>
+<table class="det" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+{% for label, v in msg.details.rows %}
+<tr><td class="lb{{ '' if loop.first else ' sep' }}">{{ t[label] }}</td><td class="val{{ '' if loop.first else ' sep' }}">{{ ui.value(v) }}</td></tr>
+{% endfor %}
+</table>
+</td></tr>
+
+{% if msg.tags %}
+<tr><td class="tags-cell"><p class="tags"><strong>{{ t.event_tags }}</strong> {EVENT.TAGS}</p></td></tr>
+{% endif %}
+
+<tr><td align="left" class="btn-row">
+{{ ui.button(t[msg.button.label], msg.button.url, size=13, pad_y=8, pad_x=16, radius=5, align="left") }}
+</td></tr>
+
+{% if logo %}
+<tr><td class="ft">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td class="ft-logo"><img class="logo" src="{$ZABBIXHOST_LOGO}" alt="Logo" width="80"></td>
+<td class="ft-brand" align="right">{{ t.zabbix_monitoring_system }}</td>
+</tr></table>
+</td></tr>
+{% else %}
+<tr><td class="ft ft-brand" align="center">{{ t.zabbix_monitoring_system }}</td></tr>
+{% endif %}
+
+</table>
+
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" class="fn"><tr><td class="fn-cell">
+<p>{{ t.auto_generated }} {{ t.sent_from }} <a href="{$ZABBIXHOST_LINK}" class="fn-link">{$ZABBIXHOST}</a></p>
+<p class="fn-company">{$CUSTOM_MESSAGE_COMPANY} &middot; {$ZABBIXHOST_LOVE}</p>
+</td></tr></table>
+
+</td></tr>
+</table>
+{% endblock %}
